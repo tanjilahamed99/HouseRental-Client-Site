@@ -5,6 +5,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import auth from "../Utility/Firebase";
 import { updateProfile } from "firebase/auth";
+import UseAxiosPublic from "../Hooks/UseAxiosPublic";
 
 
 const SignUp = () => {
@@ -12,6 +13,7 @@ const SignUp = () => {
     const [see, setSee] = useState(true)
     const navigate = useNavigate()
     const { createUser } = useContext(AuthContext)
+    const axiosPublic = UseAxiosPublic()
 
 
     const handleSignUp = e => {
@@ -24,6 +26,10 @@ const SignUp = () => {
         const password = form.password.value
         console.log(name, email, number, role, password)
 
+        const newUser = {
+            name, email, number, role
+        }
+        
         createUser(email, password)
             .then(() => {
                 updateProfile(auth.currentUser, {
@@ -34,7 +40,12 @@ const SignUp = () => {
                         'Create account Successful!',
                         'success'
                     )
+                    axiosPublic.post('/users', newUser)
+                        .then(res => {
+                            console.log(res.data)
+                        })
                     location.state ? navigate(location.state) : navigate('/')
+
                 }).catch(() => { })
             })
             .catch(error => {

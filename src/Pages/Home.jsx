@@ -1,7 +1,9 @@
+import Navbar from "../Components/Shared/Navbar";
+
 const Home = () => {
     return (
-        <div className="text-red-600">
-            Hello gays
+        <div className="container mx-auto">
+            <Navbar />
         </div>
     );
 };
