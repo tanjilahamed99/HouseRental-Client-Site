@@ -8,7 +8,7 @@ const Banner = () => {
                         <p>Top Trending</p>
                         <hr className="border-2 w-[90px] mt-1 " />
                     </div>
-                    <h1 className="mb-5 text-5xl font-bold">Welcome to <span className="text-blue-200">House</span> Renter</h1>
+                    <h1 className="mb-5 text-5xl font-bold">Welcome to <span className="text-blue-500">House</span> Renter</h1>
                     <p className="mb-5">Welcome, dear customers! We are thrilled to have you here. It is discount season, and we
                         are offering fantastic deals on a wide range of products. Do not miss out on the savings –
                         Book with us today!</p>

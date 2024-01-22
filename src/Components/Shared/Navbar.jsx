@@ -21,7 +21,7 @@ const Navbar = () => {
         {
             user && <li className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-black after:w-full after:scale-x-0 after:hover:scale-x-75 after:transition after:duration-300 after:origin-center">
                 <NavLink
-                    to="/"
+                    to="/dashboard"
                     className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "text-red-500" : ""
                     }
