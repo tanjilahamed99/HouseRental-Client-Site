@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import auth from '../Utility/Firebase';
 import UseAxiosPublic from '../Hooks/UseAxiosPublic';
 
@@ -26,6 +26,10 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
+    const userLogout = () => {
+        return signOut(auth)
+    }
+
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
@@ -33,7 +37,7 @@ const AuthProvider = ({ children }) => {
             if (currentUser || user) {
                 axiosPublic.post('/jwt', { email: currentUser?.email, name: currentUser?.displayName })
                     .then(res => {
-                        localStorage.setItem("token",res.data.token)
+                        localStorage.setItem("token", res.data.token)
                     })
             } else {
                 localStorage.removeItem('token')
@@ -45,14 +49,15 @@ const AuthProvider = ({ children }) => {
         return () => {
             unSubscribe()
         }
-    }, [])
+    }, [axiosPublic, user])
 
 
     const authValue = {
         user,
         loading,
         createUser,
-        loginUser
+        loginUser,
+        userLogout
     }
 
     return (
