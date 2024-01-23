@@ -14,7 +14,10 @@ const DisplayHouseData = ({ house }) => {
                 </div>
             </div>
             <div className='px-5 space-y-2 mt-4'>
-                <h4 className='font-semibold text-sm'>LUXURY ROOM</h4>
+                <div className=''>
+                    <h4 className='font-bold text-lg'>{name}</h4>
+                    <p className='text-sm font-bold'>Owner</p>
+                </div>
                 <h2 className='text-2xl font-bold text-[#1e1e1e]'>{roomSize}</h2>
                 <div className='flex justify-between items-center'>
                     <p className='font-medium text-sm text-[#616161]'>{roomSize}/Rooms</p>
@@ -24,7 +27,7 @@ const DisplayHouseData = ({ house }) => {
             <hr className='w-full border my-3' />
             <div className='mx-5 flex items-center justify-between'>
                 <div className=''>
-                    <h2 className='flex gap-2 items-center text-[#616161]'><FaBed className='text-2xl'></FaBed><span className='text-lg'>{ bedrooms }</span></h2>
+                    <h2 className='flex gap-2 items-center text-[#616161]'><FaBed className='text-2xl'></FaBed><span className='text-lg'>{bedrooms}</span></h2>
                 </div>
                 <div>
                 </div>

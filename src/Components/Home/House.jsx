@@ -54,7 +54,7 @@ const House = () => {
                     <option>Small</option>
                 </select>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-10">
                 {
                     houseData?.map(house => <DisplayHouseData key={house._id} house={house}></DisplayHouseData>)
                 }
