@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import UseAxiosPublic from "../Hooks/UseAxiosPublic";
 import UseMyHousesData from "../Hooks/UseMyHousesData";
+import { Link } from "react-router-dom";
 
 const ManageHouse = () => {
     const axiosPublic = UseAxiosPublic()
@@ -20,7 +21,6 @@ const ManageHouse = () => {
             if (result.isConfirmed) {
                 axiosPublic.delete(`/myHouse/${id}`)
                     .then(res => {
-                        console.log(res.data)
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
@@ -65,7 +65,9 @@ const ManageHouse = () => {
                                     </div>
                                 </td>
                                 <td>
-                                    <button className="btn btn-ghost btn-outline text-green-500">Update</button>
+                                    <Link to={`/dashboard/updateHouseDetails/${item._id}`}>
+                                        <button className="btn btn-ghost btn-outline text-green-500">Update</button>
+                                    </Link>
                                 </td>
                                 <th>
                                     <button onClick={() => handleDelete(item._id)} className="btn btn-ghost btn-outline text-red-600">Delete</button>

@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import MyHouses from "../Pages/MyHouses";
 import CreateHouseAdd from "../Pages/CreateHouseAdd";
 import ManageHouse from "../Pages/ManageHouse";
+import UpdateHouseDetails from "../Pages/UpdateHouseDetails";
 
 const Route = createBrowserRouter([
     {
@@ -43,6 +44,10 @@ const Route = createBrowserRouter([
             {
                 path: '/dashboard/manageHouse',
                 element: <PrivateRoute><ManageHouse /></PrivateRoute>
+            },
+            {
+                path: '/dashboard/updateHouseDetails/:id',
+                element: <PrivateRoute><UpdateHouseDetails /></PrivateRoute>
             },
         ]
     }
