@@ -9,6 +9,8 @@ import MyHouses from "../Pages/MyHouses";
 import CreateHouseAdd from "../Pages/CreateHouseAdd";
 import ManageHouse from "../Pages/ManageHouse";
 import UpdateHouseDetails from "../Pages/UpdateHouseDetails";
+import MyBookings from "../Pages/MyBookings";
+import ManageBooking from "../Pages/ManageBooking";
 
 const Route = createBrowserRouter([
     {
@@ -34,7 +36,7 @@ const Route = createBrowserRouter([
         element: <PrivateRoute> <Dashboard /></PrivateRoute>,
         children: [
             {
-                path: '/dashboard',
+                path: '/dashboard/myHouse',
                 element: <PrivateRoute><MyHouses /></PrivateRoute>
             },
             {
@@ -48,6 +50,14 @@ const Route = createBrowserRouter([
             {
                 path: '/dashboard/updateHouseDetails/:id',
                 element: <PrivateRoute><UpdateHouseDetails /></PrivateRoute>
+            },
+            {
+                path: '/dashboard/myBooking',
+                element: <PrivateRoute><MyBookings /></PrivateRoute>
+            },
+            {
+                path: '/dashboard/manageBooking',
+                element: <PrivateRoute><ManageBooking /></PrivateRoute>
             },
         ]
     }
