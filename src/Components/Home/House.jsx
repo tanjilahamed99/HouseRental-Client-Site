@@ -95,7 +95,7 @@ const House = () => {
             </div>
             <div className="flex gap-3 justify-center mt-10">
                 {
-                    pageNum?.map(item => <button onClick={() => setPageShow(item)} className='btn btn-active hover:btn' key={item} >{item}</button>)
+                    pageNum?.map(item => <button onClick={() => setPageShow(item)} className='btn btn-outline btn-primary' key={item} >{item}</button>)
                 }
             </div>
         </div>
