@@ -10,13 +10,29 @@ const House = () => {
     const [availability, setAvailability] = useState()
     const [roomSize, setRoomSize] = useState("")
     const [roomPrice, setRoomPrice] = useState("")
+    const [totalData, setTotalData] = useState()
+    const [pageShow, setPageShow] = useState()
 
 
     useEffect(() => {
-        axiosPublic.get(`/allHouse?city=${city}&bedrooms=${bedrooms}&availability=${availability}&roomSize=${roomSize}&roomPrice=${roomPrice}`)
+        axiosPublic.get(`/allHouse?city=${city}&bedrooms=${bedrooms}&availability=${availability}&roomSize=${roomSize}&roomPrice=${roomPrice}&page=${pageShow}`)
             .then(res => setHouseData(res.data))
-    }, [axiosPublic, availability, bedrooms, roomSize, city, roomPrice])
+    }, [axiosPublic, availability, bedrooms, roomSize, city, roomPrice,pageShow])
 
+    useEffect(() => {
+        axiosPublic.get('/totalData')
+            .then(res => setTotalData(res.data.total))
+    }, [axiosPublic, setTotalData])
+
+    const maxItem = 10
+
+    const totalPage = Math.ceil(totalData / maxItem)
+
+    let pageNum = []
+
+    for (let index = 0; index < totalPage; index++) {
+        pageNum.push(index)
+    }
 
 
     return (
@@ -75,6 +91,11 @@ const House = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-10">
                 {
                     houseData?.map(house => <DisplayHouseData key={house._id} house={house}></DisplayHouseData>)
+                }
+            </div>
+            <div className="flex gap-3 justify-center mt-10">
+                {
+                    pageNum?.map(item => <button onClick={() => setPageShow(item)} className='btn btn-active hover:btn' key={item} >{item}</button>)
                 }
             </div>
         </div>
