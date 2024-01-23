@@ -21,7 +21,7 @@ const Dashboard = () => {
                 </li>
                 <li className="list-none">
                     <NavLink
-                        to="/manageHouse"
+                        to="/dashboard/manageHouse"
                         className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "text-white" : ""
                         }
