@@ -18,10 +18,9 @@ const DisplayHouseData = ({ house }) => {
                     <h4 className='font-bold text-lg'>{name}</h4>
                     <p className='text-sm font-bold'>Owner</p>
                 </div>
-                <h2 className='text-2xl font-bold text-[#1e1e1e]'>{roomSize}</h2>
+                <h2 className=' font-bold text-[#1e1e1e]'>{roomSize}</h2>
                 <div className='flex justify-between items-center'>
                     <p className='font-medium text-sm text-[#616161]'>{roomSize}/Rooms</p>
-                    {/* <p className='font-medium'>{available ? 'Available' : 'Already booked'}</p> */}
                 </div>
             </div>
             <hr className='w-full border my-3' />
