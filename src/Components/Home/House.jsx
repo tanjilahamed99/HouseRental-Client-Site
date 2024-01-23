@@ -6,15 +6,16 @@ const House = () => {
     const axiosPublic = UseAxiosPublic()
     const [houseData, setHouseData] = useState([])
     const [city, setCIty] = useState("")
-    const [bedRooms, setBedRooms] = useState()
+    const [bedrooms, setBedrooms] = useState('')
     const [availability, setAvailability] = useState()
     const [roomSize, setRoomSize] = useState("")
+    const [roomPrice, setRoomPrice] = useState("")
 
 
     useEffect(() => {
-        axiosPublic.get(`/allHouse?city=${city}&bedRooms=${bedRooms}&availability=${availability}&roomSize=${roomSize}`)
+        axiosPublic.get(`/allHouse?city=${city}&bedrooms=${bedrooms}&availability=${availability}&roomSize=${roomSize}&roomPrice=${roomPrice}`)
             .then(res => setHouseData(res.data))
-    }, [axiosPublic, availability, bedRooms, roomSize, city])
+    }, [axiosPublic, availability, bedrooms, roomSize, city, roomPrice])
 
 
 
@@ -42,11 +43,11 @@ const House = () => {
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn m-1 btn-outline">Bed Rooms</div>
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                        <li ><a onClick={() => setBedRooms(1)}>1</a></li>
-                        <li ><a onClick={() => setBedRooms(2)}>2</a></li>
-                        <li ><a onClick={() => setBedRooms(3)}>3</a></li>
-                        <li ><a onClick={() => setBedRooms(4)}>4</a></li>
-                        <li ><a onClick={() => setBedRooms(5)}>5</a></li>
+                        <li ><a onClick={() => setBedrooms('1')}>1</a></li>
+                        <li ><a onClick={() => setBedrooms('2')}>2</a></li>
+                        <li ><a onClick={() => setBedrooms('3')}>3</a></li>
+                        <li ><a onClick={() => setBedrooms('4')}>4</a></li>
+                        <li ><a onClick={() => setBedrooms('5')}>5</a></li>
                     </ul>
                 </div>
                 <div className="dropdown">
@@ -59,8 +60,15 @@ const House = () => {
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn m-1 btn-outline">Room Size</div>
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                        <li ><a onClick={() => setRoomSize('Bigger')}>Bigger</a></li>
-                        <li ><a onClick={() => setRoomSize("Small")}>Small</a></li>
+                        <li ><a onClick={() => setRoomSize('desc')}>Bigger</a></li>
+                        <li ><a onClick={() => setRoomSize("asc")}>Small</a></li>
+                    </ul>
+                </div>
+                <div className="dropdown">
+                    <div tabIndex={0} role="button" className="btn m-1 btn-outline">Price</div>
+                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <li ><a onClick={() => setRoomPrice('asc')}>Lowest Price</a></li>
+                        <li ><a onClick={() => setRoomPrice("desc")}>Hightest Price</a></li>
                     </ul>
                 </div>
             </div>
