@@ -12,7 +12,7 @@ const Banner = () => {
                     <p className="mb-5">Welcome, dear customers! We are thrilled to have you here. It is discount season, and we
                         are offering fantastic deals on a wide range of products. Do not miss out on the savings –
                         Book with us today!</p>
-                    <button className="btn btn-primary">Get Started</button>
+                    <button className="btn btn-primary btn-outline">Get Started</button>
                 </div>
                 <div className="w-[30%]"></div>
             </div>

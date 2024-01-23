@@ -1,4 +1,5 @@
 import Banner from "../Components/Home/Banner";
+import House from "../Components/Home/House";
 import Navbar from "../Components/Shared/Navbar";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
         <div className="container mx-auto">
             <Navbar />
             <Banner />
+            <House />
         </div>
     );
 };
