@@ -29,7 +29,7 @@ const DisplayHouseDetails = () => {
         const RenterName = user?.displayName
         const renterNumber = e.target.number.value
         const purchaseData = {
-            renterEmail, RenterName, renterNumber, name, email, address, city, bedrooms, bathrooms, roomSize, picture, availabilityDate, rent, phoneNumber, desc,
+            renterEmail, RenterName, renterNumber, name, email, address, city, bedrooms, bathrooms, roomSize, picture, availabilityDate, rent, phoneNumber, desc, houseId: _id
         }
 
 
