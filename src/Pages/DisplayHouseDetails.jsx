@@ -12,14 +12,15 @@ const DisplayHouseDetails = () => {
     const [detail, setDetail] = useState({})
     const { user } = useContext(AuthContext)
     const [role] = UseUserDetails()
+    const [reload, setReload] = useState()
 
-    const { name, email, address, city, bedrooms, bathrooms, roomSize, picture, availabilityDate, rent, phoneNumber, desc } = detail
+    const { name, email, address, city, _id, bedrooms, open, bathrooms, roomSize, picture, availabilityDate, rent, phoneNumber, desc } = detail
 
 
     useEffect(() => {
         axiosPublic.get(`/updateHouse/${id}`)
             .then(res => setDetail(res.data))
-    }, [axiosPublic, id])
+    }, [axiosPublic, id, reload])
 
 
     const handleBook = e => {
@@ -28,11 +29,11 @@ const DisplayHouseDetails = () => {
         const RenterName = user?.displayName
         const renterNumber = e.target.number.value
         const purchaseData = {
-            renterEmail, RenterName, renterNumber, name, email, address, city, bedrooms, bathrooms, roomSize, picture, availabilityDate, rent, phoneNumber, desc
+            renterEmail, RenterName, renterNumber, name, email, address, city, bedrooms, bathrooms, roomSize, picture, availabilityDate, rent, phoneNumber, desc,
         }
 
 
-        if (role?.purchaseNumber > 0 && role?.purchaseNumber < 3) {
+        if (role?.purchaseNumber > 0 && open == true) {
             axiosPublic.post('/purchase', purchaseData)
                 .then(res => {
                     if (res.data.acknowledged) {
@@ -46,12 +47,28 @@ const DisplayHouseDetails = () => {
                                         showConfirmButton: false,
                                         timer: 1500
                                     })
+                                    axiosPublic.patch(`/house/${_id}`, { open: false })
+                                        .then(res => {
+                                            if (res.data.modifiedCount > 0) {
+                                                setReload("again")
+                                            }
+                                        })
                                 }
                             })
                     }
                 })
-        } else {
-            console.log('kisu nh')
+        } else if (role?.purchaseNumber <= 0) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "You have book 2 houses!",
+            });
+        } else if (open == false) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "This House is Booked",
+            });
         }
 
 
@@ -79,7 +96,7 @@ const DisplayHouseDetails = () => {
                                         <h2 className="bg-white p-2 lg:p-4 font-semibold text-lg">Rent  : <span className="text-[#c19d68]">${rent}</span></h2>
                                     </div>
                                     <div>
-                                        <h2 className="bg-white p-2 lg:p-4 font-semibold text-lg">Available  : <span className="text-[#c19d68]">{availabilityDate ? 'Available' : 'Already booking'}</span></h2>
+                                        <h2 className="bg-white p-2 lg:p-4 font-semibold text-lg">Available  : <span className="text-[#c19d68]">{open ? 'Available' : 'Already booking'}</span></h2>
                                     </div>
                                     <div>
                                         <h2 className="bg-white p-2 lg:p-4 font-semibold text-lg">City : {city}</h2>
