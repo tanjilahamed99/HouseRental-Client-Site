@@ -11,6 +11,7 @@ import ManageHouse from "../Pages/ManageHouse";
 import UpdateHouseDetails from "../Pages/UpdateHouseDetails";
 import MyBookings from "../Pages/MyBookings";
 import ManageBooking from "../Pages/ManageBooking";
+import DisplayHouseDetails from "../Pages/DisplayHouseDetails";
 
 const Route = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const Route = createBrowserRouter([
             {
                 path: '/signUp',
                 element: <SignUp />
+            },
+            {
+                path: '/displayHouseDetails/:id',
+                element: <DisplayHouseDetails />
             },
         ]
     },

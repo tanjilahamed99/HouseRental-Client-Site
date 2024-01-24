@@ -24,11 +24,12 @@ const SignUp = () => {
         const number = form.number.value
         const role = form.role.value
         const password = form.password.value
+        const purchaseNumber = 2
 
         const newUser = {
-            name, email, number, role
+            name, email, number, role,purchaseNumber
         }
-        
+
         createUser(email, password)
             .then(() => {
                 updateProfile(auth.currentUser, {

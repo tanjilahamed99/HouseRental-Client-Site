@@ -4,9 +4,9 @@ import { FaBed } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const DisplayHouseData = ({ house }) => {
-    const { name, email, address, city, bedrooms, roomSize, picture, availabilityDate, rent, phoneNumber, desc } = house
+    const { name, address, city, bedrooms, roomSize, picture, availabilityDate, rent, _id} = house
     return (
-        <Link className=' shadow-md hover:shadow-lg pb-5'>
+        <Link to={`/displayHouseDetails/${_id}`} className=' shadow-md hover:shadow-lg pb-5'>
             <div className='relative '>
                 <img className='h-[250px] w-full mx-auto' src={picture} alt="" />
                 <div className='flex items-center gap-2 absolute top-3 right-3 bg-blue-500 p-3 text-white rounded-md '>
